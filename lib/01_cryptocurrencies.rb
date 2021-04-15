@@ -5,6 +5,29 @@ devises = ["Bitcoin", "Ethereum", "XRP", "Bitcoin Cash", "EOS", "Litecoin", "Car
 
 my_hash = devises.zip(prix).to_h
 
+# La ou les crypto qui ont la plus grosse valeur.
+puts "La crypto qui a la plus grosse valeur est #{my_hash.max_by{|k,v| v.to_f}}"
+puts "---------------------------##########################-----------------------"
+
+# La ou les crypto qui ont la plus petite valeur.
+puts "La crypto qui a la plus petite valeur est #{my_hash.min_by{|k,v| v.to_f}}"
+puts "---------------------------##########################-----------------------"
+
+# Les devises dont le cours est inférieur à 6000
+$hash6000 = Hash.new
+my_hash.each_pair {
+    |key, value|   
+    if value.to_f < 6000
+        $hash6000[key] = value
+    end
+    }
+puts "Les devises dont le cours est inférieur à 6000"
+print $hash6000
+puts "---------------------------##########################-----------------------"
+
+# La devise la plus chère parmi celles dont le cours est inférieur à 6000.
+puts "La crypto qui a la plus grosse valeur est #{$hash6000.max_by{|k,v| v.to_f}}"
+puts "---------------------------##########################-----------------------"
 
 
 
