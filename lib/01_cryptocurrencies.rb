@@ -10,7 +10,12 @@ puts "La crypto qui a la plus grosse valeur est #{my_hash.max_by{|k,v| v.to_f}}"
 puts "---------------------------##########################-----------------------"
 
 # La ou les crypto qui ont la plus petite valeur.
-puts "La crypto qui a la plus petite valeur est #{my_hash.min_by{|k,v| v.to_f}}"
+result = my_hash.min_by{|k,v| v.to_f}
+min_results = my_hash.select {|k,v| v == result[1]}
+min_results.each_with_index do |(k,v), index|
+    puts "\"#{k}\" est la crypto ayant la plus PETITE valeur => #{"%.8f" % v}"
+end
+
 puts "---------------------------##########################-----------------------"
 
 # Les devises dont le cours est inférieur à 6000
@@ -22,7 +27,7 @@ my_hash.each_pair {
     end
     }
 puts "Les devises dont le cours est inférieur à 6000"
-print $hash6000
+puts $hash6000
 puts "---------------------------##########################-----------------------"
 
 # La devise la plus chère parmi celles dont le cours est inférieur à 6000.
